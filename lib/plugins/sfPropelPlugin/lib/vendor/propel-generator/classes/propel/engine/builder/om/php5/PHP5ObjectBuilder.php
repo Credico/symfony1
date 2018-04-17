@@ -2204,7 +2204,7 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 		$script .= "
 	/**
 	 * Array of ValidationFailed objects.
-	 * @var        array ValidationFailed[]
+	 * @var        ValidationFailed[]
 	 */
 	protected \$validationFailures = array();
 ";
@@ -2221,7 +2221,7 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 	 * Gets any ValidationFailed objects that resulted from last call to validate().
 	 *
 	 *
-	 * @return     array ValidationFailed[]
+	 * @return     ValidationFailed[]
 	 * @see        validate()
 	 */
 	public function getValidationFailures()
@@ -2877,7 +2877,7 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 		} else {
 			$script .= "
 	/**
-	 * @var        array {$className}[] Collection to store aggregation of $className objects.
+	 * @var        {$className}[] Collection to store aggregation of $className objects.
 	 */
 	protected $".$this->getRefFKCollVarName($refFK).";
 
@@ -3123,7 +3123,7 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 	 *
 	 * @param      PropelPDO \$con
 	 * @param      Criteria \$criteria
-	 * @return     array {$className}[]
+	 * @return     {$className}[]
 	 * @throws     PropelException
 	 */
 	public function get$relCol(\$criteria = null, PropelPDO \$con = null)

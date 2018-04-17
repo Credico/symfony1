@@ -534,7 +534,7 @@ class Criteria implements IteratorAggregate {
 	 *
 	 * @param      string $key
 	 * @param      mixed $value
-	 * @return     Instance of self.
+	 * @return     Criteria Instance of self.
 	 */
 	public function put($key, $value)
 	{
@@ -602,7 +602,7 @@ class Criteria implements IteratorAggregate {
 	 * @param      mixed $value
 	 * @param      string $comparison A String.
 	 *
-	 * @return     A modified Criteria object.
+	 * @return     Criteria A modified Criteria object.
 	 */
 	public function add($p1, $value = null, $comparison = null)
 	{
@@ -697,7 +697,7 @@ class Criteria implements IteratorAggregate {
 
 	/**
 	 * Get the array of Joins.
-	 * @return     array Join[]
+	 * @return     Join[]
 	 */
 	public function getJoins()
 	{
@@ -813,7 +813,7 @@ class Criteria implements IteratorAggregate {
 	/**
 	 * Get offset.
 	 *
-	 * @return     An int with the value for offset.
+	 * @return     int An int with the value for offset.
 	 */
 	public function getOffset()
 	{
@@ -870,7 +870,7 @@ class Criteria implements IteratorAggregate {
 	/**
 	 * Get select modifiers.
 	 *
-	 * @return     An array with the select modifiers.
+	 * @return     array An array with the select modifiers.
 	 */
 	public function getSelectModifiers()
 	{
@@ -881,7 +881,7 @@ class Criteria implements IteratorAggregate {
 	 * Add group by column name.
 	 *
 	 * @param      string $groupBy The name of the column to group by.
-	 * @return     A modified Criteria object.
+	 * @return     Criteria A modified Criteria object.
 	 */
 	public function addGroupByColumn($groupBy)
 	{
@@ -893,7 +893,7 @@ class Criteria implements IteratorAggregate {
 	 * Add order by column name, explicitly specifying ascending.
 	 *
 	 * @param      name The name of the column to order by.
-	 * @return     A modified Criteria object.
+	 * @return     Criteria A modified Criteria object.
 	 */
 	public function addAscendingOrderByColumn($name)
 	{
@@ -1082,7 +1082,7 @@ class Criteria implements IteratorAggregate {
 	 *
 	 * @param      having A Criterion object
 	 *
-	 * @return     A modified Criteria object.
+	 * @return     Criteria A modified Criteria object.
 	 */
 	public function addHaving(Criterion $having)
 	{
@@ -1728,7 +1728,7 @@ class Criterion  {
 	/**
 	 * get an array of all criterion attached to this
 	 * recursing through all sub criterion
-	 * @return     array Criterion[]
+	 * @return     Criterion[]
 	 */
 	public function getAttachedCriterion()
 	{
