@@ -343,6 +343,12 @@ class BasePeer
 		// we also need the columns for the update SQL
 		$updateTablesColumns = $updateValues->getTablesColumns();
 
+		// throw an exception when selectcriteria is empty and updatevalues aren't, the developer probably
+        // didn't realise this and wanted to update 'all' records
+        if (0 === count($tablesColumns) && 0 !== count($updateTablesColumns)) {
+            throw new PropelException('Selectcriteria is empty, no records will be updated');
+        }
+
 		$affectedRows = 0; // initialize this in case the next loop has no iterations.
 
 		foreach ($tablesColumns as $tableName => $columns) {
