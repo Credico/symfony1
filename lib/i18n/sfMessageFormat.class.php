@@ -237,7 +237,7 @@ class sfMessageFormat
   /**
    * Gets the message source.
    *
-   * @return MessageSource 
+   * @return sfMessageSource
    */
   function getSource()
   {
