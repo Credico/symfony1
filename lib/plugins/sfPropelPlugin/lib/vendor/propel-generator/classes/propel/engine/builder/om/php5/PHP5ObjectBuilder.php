@@ -1263,7 +1263,7 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 		if (\$v === null || \$v === '') {
 			\$dt = null;
 		} elseif (\$v instanceof DateTimeInterface) {
-			\$dt = \$v;
+			\$dt = \$v->setTimeZone(new DateTimeZone(date_default_timezone_get()));
 		} else {
 			// some string/numeric value passed; we normalize that so that we can
 			// validate it.
@@ -1272,7 +1272,7 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 					\$dt = new $dateTimeClass('@'.\$v, new DateTimeZone('UTC'));
 					// We have to explicitly specify and then change the time zone because of a
 					// DateTime bug: http://bugs.php.net/bug.php?id=43003
-					\$dt->setTimeZone(new DateTimeZone(date_default_timezone_get()));
+					\$dt = \$dt->setTimeZone(new DateTimeZone(date_default_timezone_get()));
 				} else {
 					\$dt = new $dateTimeClass(\$v);
 				}
