@@ -400,6 +400,7 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 	 * @param      Column $col
 	 **/
 	protected function addColumnAttributeLoaderComment(&$script, Column $col) {
+		$clo = strtolower($col->getName());
 		$script .= "
 	/**
 	 * Whether the lazy-loaded $clo value has been loaded from database.
@@ -828,6 +829,7 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 ";
 
         if($col->isNotNull()) {
+		    $visibility = $col->getAccessorVisibility();
 		    $script .= "    }
 
    ".$visibility." function getHas$cfc()
@@ -2718,6 +2720,7 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 
 		#$className = $this->getForeignTable($fk)->getPhpName();
 		$methodAffix = $this->getFKPhpNameAffix($fk);
+		$tblFK = $this->getForeignTable($fk);
 		#$varName = $this->getFKVarName($fk);
 
 		$script .= "
@@ -3236,6 +3239,7 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 		$joinedTableObjectBuilder = $this->getNewObjectBuilder($refFK->getTable());
 		$joinedTablePeerBuilder = $this->getNewObjectBuilder($refFK->getTable());
 		$className = $joinedTableObjectBuilder->getObjectClassname();
+		$throwOnNull = $table->getAttribute('throwOnNull', false);
 
 		$varName = $this->getPKRefFKVarName($refFK);
 
@@ -3390,7 +3394,7 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 				$script .= "
 			if (\$this->$aVarName !== null) {
 				if (\$this->".$aVarName."->isModified() || \$this->".$aVarName."->isNew()) {
-					\$affectedRows += \$this->".$aVarName."->save(\$con, true === \$resolveDependencyProblems ? 'skip-dependants' : false);
+					\$affectedRows += \$this->".$aVarName."->save(\$con, false !== \$resolveDependencyProblems ? 'skip-dependants' : false);
 				}
 				\$this->set".$this->getFKPhpNameAffix($fk, $plural = false)."(\$this->$aVarName);
 			}
