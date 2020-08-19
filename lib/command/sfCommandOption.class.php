@@ -80,7 +80,7 @@ class sfCommandOption
   /**
    * Returns the shortcut.
    *
-   * @return string The shortcut
+   * @return string|null The shortcut
    */
   public function getShortcut()
   {
