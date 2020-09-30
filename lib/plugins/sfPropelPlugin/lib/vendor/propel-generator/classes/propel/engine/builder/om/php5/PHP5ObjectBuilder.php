@@ -1285,7 +1285,7 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 					\$dt = new $dateTimeClass('@'.\$v, new DateTimeZone('UTC'));
 					// We have to explicitly specify and then change the time zone because of a
 					// DateTime bug: http://bugs.php.net/bug.php?id=43003
-					\$dt->setTimeZone(new DateTimeZone(date_default_timezone_get()));
+					\$dt = \$dt->setTimeZone(new DateTimeZone(date_default_timezone_get()));
 				} else {
 					\$dt = new $dateTimeClass(\$v);
 				}
