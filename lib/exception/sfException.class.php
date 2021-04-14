@@ -255,9 +255,9 @@ class sfException extends Exception
    * Returns the path for the template error message.
    *
    * @param  string  $format The request format
-   * @param  Boolean $debug  Whether to return a template for the debug mode or not
+   * @param  bool $debug  Whether to return a template for the debug mode or not
    *
-   * @return string|Boolean  false if the template cannot be found for the given format,
+   * @return string|bool  false if the template cannot be found for the given format,
    *                         the absolute path to the template otherwise
    */
   static public function getTemplatePathForError($format, $debug)
@@ -370,7 +370,7 @@ class sfException extends Exception
    * Formats an array as a string.
    *
    * @param array   $args     The argument array
-   * @param boolean $single
+   * @param bool $single
    * @param string  $format   The format string (html or txt)
    *
    * @return string

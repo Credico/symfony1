@@ -124,7 +124,7 @@ class sfValidatorPropelUnique extends sfValidatorSchema
    * @param BaseObject  $object   A Propel object
    * @param array       $values   An array of values
    *
-   * @return Boolean     true if the object is being updated, false otherwise
+   * @return bool     true if the object is being updated, false otherwise
    */
   protected function isUpdate(BaseObject $object, $values)
   {

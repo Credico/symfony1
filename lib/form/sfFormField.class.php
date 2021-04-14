@@ -71,7 +71,7 @@ class sfFormField
    *
    * This is a hack needed because PHP does not allow to throw exceptions in __toString() magic method.
    *
-   * @return boolean
+   * @return bool
    */
   static public function hasToStringException()
   {
@@ -256,7 +256,7 @@ class sfFormField
   /**
    * Returns true if the widget is hidden.
    *
-   * @return Boolean true if the widget is hidden, false otherwise
+   * @return bool true if the widget is hidden, false otherwise
    */
   public function isHidden()
   {
@@ -316,7 +316,7 @@ class sfFormField
   /**
    * Returns true is the field has an error.
    *
-   * @return Boolean true if the field has some errors, false otherwise
+   * @return bool true if the field has some errors, false otherwise
    */
   public function hasError()
   {

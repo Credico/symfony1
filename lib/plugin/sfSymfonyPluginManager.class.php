@@ -212,7 +212,7 @@ class sfSymfonyPluginManager extends sfPluginManager
    *
    * @param  array   $dependency A dependency array
    *
-   * @return Boolean true if the plugin is compatible, false otherwise
+   * @return bool true if the plugin is compatible, false otherwise
    */
   protected function isPluginCompatibleWithDependency($dependency)
   {

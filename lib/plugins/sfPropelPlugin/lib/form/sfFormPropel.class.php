@@ -156,7 +156,7 @@ abstract class sfFormPropel extends sfFormObject
   /**
    * Returns true if the current form has some associated i18n objects.
    *
-   * @return Boolean true if the current form has some associated i18n objects, false otherwise
+   * @return bool true if the current form has some associated i18n objects, false otherwise
    */
   public function isI18n()
   {

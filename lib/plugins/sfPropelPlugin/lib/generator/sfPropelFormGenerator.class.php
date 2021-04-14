@@ -459,7 +459,7 @@ class sfPropelFormGenerator extends sfGenerator
   /**
    * Returns true if the current table is internationalized.
    *
-   * @return Boolean true if the current table is internationalized, false otherwise
+   * @return bool true if the current table is internationalized, false otherwise
    */
   public function isI18n()
   {

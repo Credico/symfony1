@@ -42,7 +42,7 @@ class sfFormFieldSchema extends sfFormField implements ArrayAccess, Iterator, Co
   /**
    * Renders hidden form fields.
    *
-   * @param boolean $recursive False will prevent hidden fields from embedded forms from rendering
+   * @param bool $recursive False will prevent hidden fields from embedded forms from rendering
    *
    * @return string
    */
@@ -61,7 +61,7 @@ class sfFormFieldSchema extends sfFormField implements ArrayAccess, Iterator, Co
   /**
    * Returns an array of hidden fields from the current schema.
    *
-   * @param boolean $recursive Whether to recur through embedded schemas
+   * @param bool $recursive Whether to recur through embedded schemas
    *
    * @return array
    */
@@ -89,7 +89,7 @@ class sfFormFieldSchema extends sfFormField implements ArrayAccess, Iterator, Co
    *
    * @param string $name The name of the bound field
    *
-   * @return Boolean true if the widget exists, false otherwise
+   * @return bool true if the widget exists, false otherwise
    */
   public function offsetExists($name)
   {
@@ -200,7 +200,7 @@ class sfFormFieldSchema extends sfFormField implements ArrayAccess, Iterator, Co
   /**
    * Returns true if the current form field is valid (implements the Iterator interface).
    *
-   * @return boolean The validity of the current element; true if it is valid
+   * @return bool The validity of the current element; true if it is valid
    */
   public function valid()
   {

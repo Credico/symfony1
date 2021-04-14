@@ -71,7 +71,7 @@ class sfRequestRoute extends sfRoute
    * @param  mixed   $params The parameters
    * @param  array   $context The context
    *
-   * @return Boolean true if the parameters match this route, false otherwise.
+   * @return bool true if the parameters match this route, false otherwise.
    */
   public function matchesParameters($params, $context = array())
   {

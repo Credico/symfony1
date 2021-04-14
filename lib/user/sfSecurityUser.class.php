@@ -39,7 +39,7 @@ interface sfSecurityUser
    *
    * @return bool true, if this user has the credential, otherwise false.
    */
-  public function hasCredential($credential);
+  public function hasCredential($credentials);
 
   /**
    * Indicates whether or not this user is authenticated.

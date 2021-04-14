@@ -1027,7 +1027,7 @@ class Table extends XMLElement implements IDMethod {
 
   /**
    * Get the value of package.
-   * @return     value of package.
+   * @return string
    */
   public function getPackage()
   {

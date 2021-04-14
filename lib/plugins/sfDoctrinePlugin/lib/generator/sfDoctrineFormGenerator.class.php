@@ -189,7 +189,7 @@ class sfDoctrineFormGenerator extends sfGenerator
    * Check to see if a model is part of a plugin
    *
    * @param string $modelName 
-   * @return boolean $bool
+   * @return bool $bool
    */
   public function isPluginModel($modelName)
   {
@@ -525,7 +525,7 @@ class sfDoctrineFormGenerator extends sfGenerator
   /**
    * Returns true if the current table is internationalized.
    *
-   * @return Boolean true if the current table is internationalized, false otherwise
+   * @return bool true if the current table is internationalized, false otherwise
    */
   public function isI18n()
   {

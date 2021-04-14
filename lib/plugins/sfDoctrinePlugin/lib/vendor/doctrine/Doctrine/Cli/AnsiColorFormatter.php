@@ -151,7 +151,7 @@ class Doctrine_Cli_AnsiColorFormatter extends Doctrine_Cli_Formatter
      *
      * @param  mixed A stream
      *
-     * @return Boolean true if the stream supports colorization, false otherwise
+     * @return bool true if the stream supports colorization, false otherwise
      */
     public function supportsColors($stream)
     {
