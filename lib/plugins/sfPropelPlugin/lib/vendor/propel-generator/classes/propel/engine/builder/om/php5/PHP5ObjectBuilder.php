@@ -4012,7 +4012,21 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 		}
 
 		foreach ($table->getColumns() as $col) {
-			if (!in_array($col, $autoIncCols, true)) {
+			if (in_array($col, $autoIncCols, true)) {
+				continue;
+			}
+
+			// Prevent implicit type-casting on required columns with default `NULL` values.
+			if (
+				$col->isPhpPrimitiveType() &&
+				$col->isNotNull() && null === $col->getDefaultValue()
+			) {
+				$script .= "
+		if (null !== \$this->".strtolower($col->getName()).") {
+			\$copyObj->set".$col->getPhpName()."(\$this->".strtolower($col->getName()).");
+		}
+";
+			} else {
 				$script .= "
 		\$copyObj->set".$col->getPhpName()."(\$this->".strtolower($col->getName()).");
 ";
