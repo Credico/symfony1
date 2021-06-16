@@ -711,7 +711,26 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 		if (empty($defaultfmt) || 'null' === $defaultfmt) {
             $defaultfmt = null;
         }
+
         return $defaultfmt;
+    }
+
+    protected function getTemporalFormatFallback(Column $col): string
+    {
+        // Default date/time formatter strings are specified in `build.properties`.
+        switch ($col->getType()) {
+            case PropelTypes::DATE:
+                return $this->getBuildProperty('defaultDateFormat') ?? 'Y-m-d';
+
+            case PropelTypes::TIME:
+                return $this->getBuildProperty('defaultTimeFormat') ?? 'H:i:s';
+
+            case PropelTypes::TIMESTAMP:
+                return $this->getBuildProperty('defaultTimeStampFormat') ?? 'Y-m-d H:i:s';
+
+            default:
+                throw new EngineException('Unsupported temporal type for column with name "'.$col->getName().'".');
+        }
     }
 
 	/**
@@ -742,6 +761,8 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 	protected function addTemporalAccessorBody(&$script, Column $col) {
 		$cfc = $col->getPhpName();
 		$clo = strtolower($col->getName());
+
+		$defaultFormat = $this->getTemporalFormat($col) ?? $this->getTemporalFormatFallback($col);
 
 		$useDateTime = $this->getBuildProperty('useDateTimeClass');
 
@@ -786,10 +807,13 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 
 		if ($handleMysqlDate) {
 			$script .= "
-		if (\$this->$clo === '$mysqlInvalidDateString') {
+		if (".var_export($mysqlInvalidDateString, true)." === \$this->$clo) {
 			// while technically this is not a default value of NULL,
 			// this seems to be closest in meaning.
 			return null;
+		} elseif (".var_export($defaultFormat, true)." === \$format) {
+			// Skip instantiation of `\DateTime[Immutable]` when requested format already matches the default format.
+			return \$this->$clo;
 		} else {
 			try {
 				\$dt = new $dateTimeClass(\$this->$clo);
@@ -800,6 +824,11 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 ";
 		} else {
 			$script .= "
+
+		if (".var_export($defaultFormat, true)." === \$format) {
+			// Skip instantiation of `\DateTime[Immutable]` when requested format already matches the default format.
+			return \$this->$clo;
+		}
 
 		try {
 			\$dt = new $dateTimeClass(\$this->$clo);
