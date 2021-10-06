@@ -2548,7 +2548,7 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 
 		$script .= "
 	/**
-	 * @var        $className
+	 * @var        $className|null
 	 */
 	protected $".$varName.";
 ";
@@ -2934,7 +2934,7 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 		if ($refFK->isLocalPrimaryKey()) {
 			$script .= "
 	/**
-	 * @var        $className one-to-one related $className object
+	 * @var        $className|null one-to-one related $className object
 	 */
 	protected $".$this->getPKRefFKVarName($refFK).";
 ";
