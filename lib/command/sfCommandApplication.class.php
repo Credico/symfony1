@@ -361,7 +361,7 @@ abstract class sfCommandApplication
   /**
    * Renders an exception.
    *
-   * @param Exception $e An exception object
+   * @param Throwable $e An exception object
    */
   public function renderException($e)
   {

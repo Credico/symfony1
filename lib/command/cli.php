@@ -19,7 +19,7 @@ try
   $application = new sfSymfonyCommandApplication($dispatcher, null, array('symfony_lib_dir' => realpath(dirname(__FILE__).'/..')));
   $statusCode = $application->run();
 }
-catch (Exception $e)
+catch (Throwable $e)
 {
   if (!isset($application))
   {
