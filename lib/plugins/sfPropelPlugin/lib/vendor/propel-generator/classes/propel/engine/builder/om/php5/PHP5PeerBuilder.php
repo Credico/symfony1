@@ -1909,8 +1909,8 @@ abstract class ".$this->getClassname(). $extendingPeerClass . " implements Prope
 	 * Selects a collection of $className objects pre-filled with their $joinClassName objects.
 	 * @param      Criteria  \$criteria
 	 * @param      PropelPDO \$con
-	 * @param      String    \$join_behavior the type of joins to use, defaults to $join_behavior
-	 * @return     array Array of $className objects.
+	 * @param      string    \$join_behavior the type of joins to use, defaults to $join_behavior
+	 * @return     " . $this->getTable()->getAttribute('futurePhpName', $this->getObjectClassname()) . "[] Array of $className objects.
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
