@@ -2847,6 +2847,8 @@ abstract class ".$this->getClassname()." extends ".ClassTools::classname($this->
 	 * This method is protected by default in order to keep the public
 	 * api reasonable.  You can provide public methods for those you
 	 * actually need in ".$table->getPhpName().".
+     *
+     * @return " . $tblFK->getAttribute('futurePhpName', $fkPeerBuilder->getObjectClassname()) . "[]
 	 */
 	public function get".$relCol."Join".$relCol2."(\$criteria = null, \$con = null, \$join_behavior = $join_behavior)
 	{";
