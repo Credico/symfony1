@@ -55,5 +55,9 @@ class sfFrontWebController extends sfWebController
     {
       sfException::createFromException($e)->printStackTrace();
     }
+    catch (\Error $e)
+    {
+      sfException::createFromThrowable($e)->printStackTrace();
+    }
   }
 }
