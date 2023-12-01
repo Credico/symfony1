@@ -98,7 +98,7 @@ class sfYamlInline
         return 'true';
       case false === $value:
         return 'false';
-      case ctype_digit($value):
+      case ctype_digit((string) $value):
         return is_string($value) ? "'$value'" : (int) $value;
       case is_numeric($value):
         return is_infinite($value) ? str_ireplace('INF', '.Inf', strval($value)) : (is_string($value) ? "'$value'" : $value);
