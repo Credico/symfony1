@@ -381,4 +381,14 @@ class sfNamespacedParameterHolder extends sfParameterHolder
     $this->default_namespace = $data[0];
     $this->parameters = $data[1];
   }
+
+  public function __serialize()
+  {
+    return $this->serialize();
+  }
+
+  public function __unserialize($serialized)
+  {
+    return $this->unserialize($serialized);
+  }
 }
