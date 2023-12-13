@@ -833,6 +833,16 @@ class sfWebResponse extends sfResponse
     list($this->content, $this->statusCode, $this->statusText, $this->options, $this->headerOnly, $this->headers, $this->metas, $this->httpMetas, $this->stylesheets, $this->javascripts, $this->slots) = unserialize($serialized);
   }
 
+  public function __serialize()
+  {
+    return $this->serialize();
+  }
+
+  public function __unserialize($serialized)
+  {
+    return $this->unserialize($serialized);
+  }
+
   /**
    * Validate a position name.
    *
