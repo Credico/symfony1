@@ -26,6 +26,8 @@ class sfRoute implements Serializable
     $defaultParameters = array(),
     $defaultOptions    = array(),
     $compiled          = false,
+    $firstOptional     = 0,
+    $segments          = array(),
     $options           = array(),
     $pattern           = null,
     $staticPrefix      = null,
