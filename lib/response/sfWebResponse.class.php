@@ -177,6 +177,8 @@ class sfWebResponse extends sfResponse
           throw new sfException('Your expire parameter is not valid.');
         }
       }
+    } else {
+        $expire = 0;
     }
 
     $this->cookies[$name] = array(
