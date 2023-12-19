@@ -846,27 +846,28 @@ class sfRoute implements Serializable
     }
   }
 
-  public function serialize()
+  public function serialize(): string
+  {
+    return serialize($this->__serialize());
+  }
+
+  public function unserialize($data): void
+  {
+    $this->__unserialize(unserialize($data));
+  }
+
+  public function __serialize(): array
   {
     // always serialize compiled routes
     $this->compile();
+
     // sfPatternRouting will always re-set defaultParameters, so no need to serialize them
-    return serialize(array($this->tokens, $this->defaultOptions, $this->options, $this->pattern, $this->staticPrefix, $this->regex, $this->variables, $this->defaults, $this->requirements, $this->suffix, $this->customToken));
+    return [$this->tokens, $this->defaultOptions, $this->options, $this->pattern, $this->staticPrefix, $this->regex, $this->variables, $this->defaults, $this->requirements, $this->suffix, $this->customToken];
   }
 
-  public function unserialize($data)
+  public function __unserialize(array $data): void
   {
-    list($this->tokens, $this->defaultOptions, $this->options, $this->pattern, $this->staticPrefix, $this->regex, $this->variables, $this->defaults, $this->requirements, $this->suffix, $this->customToken) = unserialize($data);
+    [$this->tokens, $this->defaultOptions, $this->options, $this->pattern, $this->staticPrefix, $this->regex, $this->variables, $this->defaults, $this->requirements, $this->suffix, $this->customToken] = $data;
     $this->compiled = true;
-  }
-
-  public function __serialize()
-  {
-    return $this->serialize();
-  }
-
-  public function __unserialize($serialized)
-  {
-    return $this->unserialize($serialized);
   }
 }
