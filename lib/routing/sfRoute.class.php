@@ -263,7 +263,7 @@ class sfRoute implements Serializable
 
   static private function generateCompareVarsByStrlen($a, $b)
   {
-    return strlen($a) < strlen($b);
+    return strlen($a) <=> strlen($b);
   }
 
   /**
