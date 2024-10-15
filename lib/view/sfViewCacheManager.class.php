@@ -30,6 +30,7 @@ class sfViewCacheManager
     $controller  = null,
     $routing     = null,
     $request     = null,
+    $options     = array(),
     $loaded      = array();
 
   /**
@@ -236,7 +237,7 @@ class sfViewCacheManager
       {
         $varys[] = $header . '-' . preg_replace('/\W+/', '_', $request->getHttpHeader($header));
       }
-      $vary = implode($varys, '-');
+      $vary = implode('-', $varys);
     }
 
     return $vary;
@@ -694,7 +695,7 @@ class sfViewCacheManager
     else
     {
       ob_start();
-      ob_implicit_flush(0);
+      ob_implicit_flush(false);
 
       return null;
     }
@@ -1006,7 +1007,7 @@ class sfViewCacheManager
     if ($getParameters = $this->request->getGetParameters())
     {
       $cacheKey .= false === strpos($cacheKey, '?') ? '?' : '&';
-      $cacheKey .= http_build_query($getParameters, null, '&');
+      $cacheKey .= http_build_query($getParameters, '', '&');
     }
 
     return $cacheKey;

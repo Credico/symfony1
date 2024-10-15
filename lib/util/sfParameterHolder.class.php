@@ -197,4 +197,14 @@ class sfParameterHolder implements Serializable
   {
     $this->parameters = unserialize($serialized);
   }
+
+  public function __serialize()
+  {
+    return $this->serialize();
+  }
+
+  public function __unserialize($serialized)
+  {
+    return $this->unserialize($serialized);
+  }
 }

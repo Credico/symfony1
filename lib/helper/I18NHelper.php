@@ -54,13 +54,13 @@ function __($text, $args = array(), $catalogue = 'messages')
  * * [0]Nobody is logged|[1]There is 1 person logged|(1,+Inf]There are %number persons logged
  *
  * @param string $text      Text used for different number values
- * @param array  $args      Arguments to replace in the string
  * @param int    $number    Number to use to determine the string to use
+ * @param array  $args      Arguments to replace in the string
  * @param string $catalogue Catalogue for translation
  *
  * @return string Result of the translation
  */
-function format_number_choice($text, $args = array(), $number, $catalogue = 'messages')
+function format_number_choice($text, $number, $args = array(), $catalogue = 'messages')
 {
   $translated = __($text, $args, $catalogue);
 

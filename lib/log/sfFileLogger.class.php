@@ -32,7 +32,7 @@ class sfFileLogger extends sfLogger
    * - file:        The file path or a php wrapper to log messages
    *                You can use any support php wrapper. To write logs to the Apache error log, use php://stderr
    * - format:      The log line format (default to %time% %type% [%priority%] %message%%EOL%)
-   * - time_format: The log time strftime format (default to %b %d %H:%M:%S)
+   * - time_format: The log time date format (default to %b %d %H:%M:%S)
    * - dir_mode:    The mode to use when creating a directory (default to 0777)
    * - file_mode:   The mode to use when creating a file (default to 0666)
    *
@@ -96,7 +96,7 @@ class sfFileLogger extends sfLogger
     fwrite($this->fp, strtr($this->format, array(
       '%type%'     => $this->type,
       '%message%'  => $message,
-      '%time%'     => strftime($this->timeFormat),
+      '%time%'     => date($this->timeFormat),
       '%priority%' => $this->getPriority($priority),
       '%EOL%'      => PHP_EOL,
     )));

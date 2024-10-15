@@ -1030,6 +1030,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
    *
    * @return bool true if the widget exists, false otherwise
    */
+  #[\ReturnTypeWillChange]
   public function offsetExists($name)
   {
     return isset($this->widgetSchema[$name]);
@@ -1042,6 +1043,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
    *
    * @return sfFormField   A form field instance
    */
+  #[\ReturnTypeWillChange]
   public function offsetGet($name)
   {
     if (!isset($this->formFields[$name]))
@@ -1080,6 +1082,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
    *
    * @throws <b>LogicException</b>
    */
+  #[\ReturnTypeWillChange]
   public function offsetSet($offset, $value)
   {
     throw new LogicException('Cannot update form fields.');
@@ -1092,6 +1095,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
    *
    * @param string $offset The field name
    */
+  #[\ReturnTypeWillChange]
   public function offsetUnset($offset)
   {
     unset(
@@ -1156,6 +1160,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
   /**
    * Resets the field names array to the beginning (implements the Iterator interface).
    */
+  #[\ReturnTypeWillChange]
   public function rewind()
   {
     $this->fieldNames = $this->widgetSchema->getPositions();
@@ -1169,6 +1174,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
    *
    * @return string The key
    */
+  #[\ReturnTypeWillChange]
   public function key()
   {
     return current($this->fieldNames);
@@ -1179,6 +1185,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
    *
    * @return mixed The escaped value
    */
+  #[\ReturnTypeWillChange]
   public function current()
   {
     return $this[current($this->fieldNames)];
@@ -1187,6 +1194,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
   /**
    * Moves to the next form field (implements the Iterator interface).
    */
+  #[\ReturnTypeWillChange]
   public function next()
   {
     next($this->fieldNames);
@@ -1198,6 +1206,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
    *
    * @return bool The validity of the current element; true if it is valid
    */
+  #[\ReturnTypeWillChange]
   public function valid()
   {
     return $this->count > 0;
@@ -1208,6 +1217,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
    *
    * @return integer The number of embedded form fields
    */
+  #[\ReturnTypeWillChange]
   public function count()
   {
     return count($this->getFormFieldSchema());

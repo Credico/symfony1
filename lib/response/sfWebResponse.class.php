@@ -177,6 +177,8 @@ class sfWebResponse extends sfResponse
           throw new sfException('Your expire parameter is not valid.');
         }
       }
+    } else {
+        $expire = 0;
     }
 
     $this->cookies[$name] = array(
@@ -406,7 +408,7 @@ class sfWebResponse extends sfResponse
    */
   protected function normalizeHeaderName($name)
   {
-    return preg_replace('/\-(.)/e', "'-'.strtoupper('\\1')", strtr(ucfirst(strtolower($name)), '_', '-'));
+    return preg_replace_callback('/\-(.)/', static function ($m) { return '-'.strtoupper($m[1]); }, strtr(ucfirst(strtolower($name)), '_', '-'));
   }
 
   /**
@@ -831,6 +833,16 @@ class sfWebResponse extends sfResponse
   public function unserialize($serialized)
   {
     list($this->content, $this->statusCode, $this->statusText, $this->options, $this->headerOnly, $this->headers, $this->metas, $this->httpMetas, $this->stylesheets, $this->javascripts, $this->slots) = unserialize($serialized);
+  }
+
+  public function __serialize()
+  {
+    return $this->serialize();
+  }
+
+  public function __unserialize($serialized)
+  {
+    return $this->unserialize($serialized);
   }
 
   /**
